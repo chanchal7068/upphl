@@ -1,0 +1,44 @@
+/* =========================================================
+   UP PRO HANDBALL LEAGUE
+   TERMS & CONDITIONS - DEDICATED STYLESHEET
+   ========================================================= */
+
+@import url("privacy-policy.css");
+
+/* Custom enhancements specific to Terms & Conditions */
+.terms-clause-box {
+  background: #ffffff;
+  border-left: 4px solid var(--orange);
+  padding: 16px 20px;
+  margin: 15px 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  box-shadow: var(--shadow-sm);
+  background: #fffbf7;
+}
+
+.terms-clause-box h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--orange-dark);
+  margin-bottom: 6px;
+}
+
+.terms-clause-box p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.disclaimer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}

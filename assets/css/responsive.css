@@ -1,0 +1,1431 @@
+/* =========================================================
+   UP PRO HANDBALL LEAGUE
+   COMPLETE RESPONSIVE CSS
+   File: assets/css/responsive.css
+   ========================================================= */
+
+
+/* =========================================================
+   LARGE DESKTOP - 1920px and below
+   ========================================================= */
+
+@media screen and (max-width: 1920px) {
+
+    .container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .teams-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    }
+}
+
+
+/* =========================================================
+   DESKTOP / LAPTOP - 1366px and below
+   ========================================================= */
+
+@media screen and (max-width: 1366px) {
+
+    .container {
+        max-width: 1280px;
+    }
+
+    header .container {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .nav-links {
+        gap: 1.1rem;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .teams-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .team-card-content {
+        padding: 1.5rem;
+    }
+
+    .timeline {
+        max-width: 900px;
+    }
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP - 1024px
+   ========================================================= */
+
+@media screen and (max-width: 1024px) {
+
+    /* ---------- GLOBAL ---------- */
+
+    .container {
+        width: 100%;
+        max-width: 960px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    /* ---------- TOP BAR ---------- */
+
+    .top-bar-left {
+        gap: 1rem;
+    }
+
+    .top-bar-left a {
+        font-size: 0.8rem;
+    }
+
+    .top-bar-right {
+        gap: 0.7rem;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    header {
+        z-index: 1000;
+    }
+
+    .header-container {
+        min-height: 75px;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 44px;
+        height: 44px;
+
+        border: 1px solid #f28c28;
+        border-radius: 8px;
+
+        background: #ffffff;
+        color: #f28c28;
+
+        font-size: 1.2rem;
+        cursor: pointer;
+
+        transition: all 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+        background: #f28c28;
+        color: #ffffff;
+    }
+
+
+    /* ---------- MOBILE NAVIGATION ---------- */
+
+    nav#nav-menu {
+
+        position: fixed;
+
+        top: 75px;
+        right: -320px;
+
+        width: 300px;
+        max-width: 85vw;
+
+        height: calc(100vh - 75px);
+
+        background: #ffffff;
+
+        border-left: 1px solid #eeeeee;
+
+        box-shadow: -8px 0 25px rgba(0, 0, 0, 0.10);
+
+        padding: 1.2rem;
+
+        overflow-y: auto;
+
+        z-index: 9999;
+
+        transition:
+            right 0.35s ease,
+            visibility 0.35s ease;
+
+        visibility: hidden;
+    }
+
+
+    nav#nav-menu.active {
+        right: 0;
+        visibility: visible;
+    }
+
+
+    /* ---------- NAV LINKS ---------- */
+
+    .nav-links {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        width: 100%;
+
+        gap: 0.35rem;
+    }
+
+
+    .nav-links > li {
+        width: 100%;
+    }
+
+
+    .nav-links > li > a {
+
+        width: 100%;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding: 0.85rem 1rem;
+
+        border-radius: 7px;
+
+        color: #263238;
+
+        font-size: 0.95rem;
+
+        text-decoration: none;
+
+        transition: all 0.25s ease;
+    }
+
+
+    .nav-links > li > a:hover,
+    .nav-links > li > a.active {
+
+        background: #fff3e6;
+
+        color: #f28c28;
+    }
+
+
+    /* ---------- DROPDOWN ---------- */
+
+    .dropdown-menu,
+    .nested-menu {
+
+        position: static !important;
+
+        width: 100% !important;
+
+        margin: 0.3rem 0 0 0 !important;
+
+        padding: 0 !important;
+
+        display: none;
+
+        opacity: 1 !important;
+
+        visibility: visible !important;
+
+        transform: none !important;
+
+        box-shadow: none !important;
+
+        border: none !important;
+
+        border-radius: 6px !important;
+
+        background: #fff8f1 !important;
+
+        transition: none !important;
+    }
+
+
+    .dropdown.open > .dropdown-menu {
+        display: block;
+    }
+
+
+    .nested-dropdown.open > .nested-menu {
+        display: block;
+    }
+
+
+    .dropdown-menu li,
+    .nested-menu li {
+        width: 100%;
+    }
+
+
+    .dropdown-menu a,
+    .nested-menu a {
+
+        display: block;
+
+        width: 100%;
+
+        padding: 0.7rem 1rem 0.7rem 1.8rem;
+
+        color: #444;
+
+        font-size: 0.9rem;
+
+        border-bottom: 1px solid #f2f2f2;
+    }
+
+
+    .dropdown-menu a:hover,
+    .nested-menu a:hover {
+
+        background: #ffe8d0;
+
+        color: #f28c28;
+    }
+
+
+    .nav-arrow {
+        transition: transform 0.25s ease;
+    }
+
+
+    .dropdown.open .nav-arrow {
+        transform: rotate(180deg);
+    }
+
+
+    /* ---------- TEAMS ---------- */
+
+    .teams-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 1.5rem;
+    }
+
+
+    .team-card-content {
+        padding: 1.4rem;
+    }
+
+
+    .team-info-list li {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 0.25rem;
+    }
+
+
+    /* ---------- TIMELINE ---------- */
+
+    .timeline {
+        max-width: 850px;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer-grid {
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 2.5rem;
+    }
+
+
+    /* ---------- CONTACT ---------- */
+
+    .contact-main-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+    }
+
+
+    .contact-form-panel,
+    .contact-info-panel {
+
+        padding: 2rem;
+    }
+
+
+    /* ---------- PLAYER REGISTRATION ---------- */
+
+    .registration-grid,
+    .form-grid,
+    .player-form-grid {
+
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =========================================================
+   TABLET - 768px
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* ---------- GLOBAL ---------- */
+
+    html {
+        font-size: 15px;
+    }
+
+    .container {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        padding-left: 16px;
+
+        padding-right: 16px;
+    }
+
+
+    /* ---------- TOP BAR ---------- */
+
+    .top-bar {
+
+        min-height: 36px;
+    }
+
+
+    .top-bar-left {
+        display: none;
+    }
+
+
+    .top-bar-flex {
+
+        justify-content: center;
+
+        padding: 0 12px;
+    }
+
+
+    .top-bar-right {
+
+        gap: 1rem;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    .header-container {
+
+        min-height: 70px;
+
+        padding-left: 16px;
+
+        padding-right: 16px;
+    }
+
+
+    .logo img {
+
+        max-width: 130px;
+
+        height: auto;
+    }
+
+
+    .mobile-menu-btn {
+
+        display: flex;
+
+        width: 42px;
+
+        height: 42px;
+    }
+
+
+    nav#nav-menu {
+
+        top: 70px;
+
+        height: calc(100vh - 70px);
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .teams-hero,
+    .hero,
+    .hero-section {
+
+        padding-top: 55px;
+
+        padding-bottom: 55px;
+
+        min-height: auto;
+
+        text-align: center;
+    }
+
+    .hero-content {
+        padding: 30px 0;
+        max-width: 100%;
+    }
+
+    .hero-badge {
+        font-size: 10px;
+        padding: 6px 12px;
+        margin-bottom: 16px;
+    }
+
+    .hero-content h1,
+    .teams-hero h1 {
+
+        font-size: clamp(2rem, 7vw, 3rem);
+
+        line-height: 1.1;
+
+        letter-spacing: -1px;
+
+        margin-bottom: 16px;
+    }
+
+
+    .hero-content p,
+    .teams-hero p {
+
+        font-size: 0.92rem;
+
+        line-height: 1.6;
+
+        margin-bottom: 24px;
+    }
+
+
+    /* ---------- BUTTONS ---------- */
+
+    .hero-actions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0.8rem;
+
+        width: 100%;
+    }
+
+
+    .btn {
+
+        width: 100%;
+
+        text-align: center;
+
+        justify-content: center;
+    }
+
+    /* ---------- STATS COUNTER ---------- */
+    .stats-section {
+        padding: 35px 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+
+    .stat-card {
+        padding: 16px 10px;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .stat-label {
+        font-size: 0.78rem;
+    }
+
+    /* ---------- UPCOMING MATCHES CAROUSEL ---------- */
+    .featured-match-section {
+        padding: 45px 0;
+    }
+
+    .carousel-container {
+        position: relative;
+        padding: 0;
+        gap: 8px;
+    }
+
+    .carousel-track-wrapper {
+        overflow: hidden !important;
+        padding: 10px 2px 20px;
+        width: 100%;
+    }
+
+    .carousel-track {
+        display: flex !important;
+        gap: 15px !important;
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        will-change: transform;
+    }
+
+    .carousel-match-card {
+        flex: 0 0 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .carousel-btn {
+        display: grid !important;
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* ---------- STANDINGS PREVIEW TABLE ---------- */
+    .standings-preview-section {
+        padding: 45px 0;
+    }
+
+    .compact-table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 12px;
+    }
+
+    .compact-table {
+        min-width: 480px;
+    }
+
+    .compact-table th,
+    .compact-table td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+
+    /* ---------- NEWS GRID ---------- */
+    .news-section {
+        padding: 45px 0;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    .news-card {
+        width: 100%;
+    }
+
+    .news-image {
+        height: 200px;
+    }
+
+    .news-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .news-content {
+        padding: 18px 16px;
+    }
+
+    .news-content h3 {
+        font-size: 1.15rem;
+    }
+
+    /* ---------- CTA SECTION ---------- */
+    .cta-section {
+        padding: 45px 0;
+    }
+
+    .cta-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .cta-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* ---------- TEAMS ---------- */
+
+    .teams-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 1.25rem;
+    }
+
+
+    .team-card {
+
+        width: 100%;
+    }
+
+
+    .team-card-content {
+
+        padding: 1.4rem;
+    }
+
+
+    .team-card h3 {
+
+        font-size: 1.25rem;
+    }
+
+
+    .team-info-list li {
+
+        flex-direction: row;
+
+        justify-content: space-between;
+
+        align-items: flex-start;
+
+        gap: 1rem;
+    }
+
+
+    /* ---------- TIMELINE ---------- */
+
+    .timeline {
+
+        width: 100%;
+
+        padding-left: 35px;
+    }
+
+
+    .timeline-item {
+
+        width: 100%;
+
+        margin-bottom: 1.8rem;
+    }
+
+
+    .timeline-content {
+
+        width: 100%;
+
+        padding: 1.2rem;
+    }
+
+
+    /* ---------- SECTIONS ---------- */
+
+    section {
+
+        overflow: hidden;
+    }
+
+
+    .section-title {
+
+        font-size: 1.8rem;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+    }
+
+
+    .footer-col {
+
+        width: 100%;
+    }
+
+
+    .footer-bottom-flex {
+
+        flex-direction: column;
+
+        gap: 0.7rem;
+
+        text-align: center;
+    }
+
+
+    .footer-bottom p {
+
+        font-size: 0.85rem;
+    }
+
+
+    /* ---------- FORMS ---------- */
+
+    .form-row {
+
+        flex-direction: column;
+
+        gap: 1rem;
+    }
+
+
+    .form-grid,
+    .registration-grid,
+    .player-form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .form-group {
+
+        width: 100%;
+    }
+
+
+    input,
+    select,
+    textarea {
+
+        width: 100%;
+
+        max-width: 100%;
+    }
+
+
+    /* ---------- PLAYER PROFILE ---------- */
+
+    .profile-container {
+
+        grid-template-columns: 1fr !important;
+
+        gap: 1.5rem;
+    }
+
+
+    .profile-card {
+
+        width: 100%;
+    }
+
+
+    .profile-header {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 1rem;
+    }
+
+
+    .profile-image {
+
+        margin: auto;
+    }
+
+
+    .profile-details {
+
+        grid-template-columns: 1fr !important;
+    }
+
+
+    /* ---------- TABLES ---------- */
+
+    .table-wrapper {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    table {
+
+        min-width: 650px;
+    }
+
+
+    /* ---------- FIXTURES ---------- */
+
+    .fixtures-grid {
+
+        grid-template-columns: 1fr !important;
+    }
+
+
+    .fixture-card {
+
+        width: 100%;
+    }
+
+
+    /* ---------- POINT TABLE ---------- */
+
+    .point-table-wrapper {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+
+/* =========================================================
+   MOBILE - 576px
+   ========================================================= */
+
+@media screen and (max-width: 576px) {
+
+    /* ---------- GLOBAL ---------- */
+
+    html {
+        font-size: 14px;
+    }
+
+
+    .container {
+
+        padding-left: 14px;
+
+        padding-right: 14px;
+    }
+
+
+    /* ---------- TOP BAR ---------- */
+
+    .top-bar-right a {
+
+        width: 28px;
+
+        height: 28px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    .header-container {
+
+        min-height: 65px;
+    }
+
+
+    .logo img {
+
+        max-width: 115px;
+    }
+
+
+    .mobile-menu-btn {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 1rem;
+    }
+
+
+    nav#nav-menu {
+
+        top: 65px;
+
+        width: 290px;
+
+        max-width: 90vw;
+
+        height: calc(100vh - 65px);
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .hero,
+    .teams-hero {
+
+        padding-top: 55px;
+
+        padding-bottom: 55px;
+    }
+
+
+    .hero-content h1,
+    .teams-hero h1 {
+
+        font-size: 2rem;
+
+        line-height: 1.2;
+    }
+
+
+    .hero-content p,
+    .teams-hero p {
+
+        font-size: 0.9rem;
+    }
+
+
+    /* ---------- TEAM CARDS ---------- */
+
+    .teams-section {
+
+        padding-top: 45px;
+
+        padding-bottom: 45px;
+    }
+
+
+    .team-card-content {
+
+        padding: 1.2rem;
+    }
+
+
+    .team-card h3 {
+
+        font-size: 1.15rem;
+    }
+
+
+    .team-info-list {
+
+        gap: 0.7rem;
+    }
+
+
+    .team-info-list li {
+
+        flex-direction: column;
+
+        gap: 0.2rem;
+
+        padding-bottom: 0.7rem;
+    }
+
+
+    /* ---------- TIMELINE ---------- */
+
+    .timeline {
+
+        padding-left: 25px;
+    }
+
+
+    .timeline-content {
+
+        padding: 1rem;
+    }
+
+
+    .timeline-content h4 {
+
+        font-size: 1rem;
+    }
+
+
+    .timeline-content p {
+
+        font-size: 0.85rem;
+
+        line-height: 1.5;
+    }
+
+
+    /* ---------- SECTION HEADINGS ---------- */
+
+    .section-title {
+
+        font-size: 1.55rem;
+    }
+
+
+    h2 {
+
+        font-size: 1.6rem;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+
+        text-align: left;
+    }
+
+
+    .footer-grid {
+
+        gap: 1.8rem;
+    }
+
+
+    .footer-about p {
+
+        font-size: 0.85rem;
+
+        line-height: 1.6;
+    }
+
+
+    .social-icons {
+
+        display: flex;
+
+        gap: 0.7rem;
+    }
+
+
+    /* ---------- FORMS ---------- */
+
+    .form-group label {
+
+        font-size: 0.85rem;
+    }
+
+
+    input,
+    select,
+    textarea {
+
+        font-size: 0.9rem;
+
+        padding: 0.75rem;
+    }
+
+
+    .form-actions {
+
+        flex-direction: column;
+
+        gap: 0.7rem;
+    }
+
+
+    .form-actions .btn {
+
+        width: 100%;
+    }
+
+
+    /* ---------- PLAYER PROFILE ---------- */
+
+    .profile-card {
+
+        padding: 1.2rem;
+    }
+
+
+    .profile-header h2 {
+
+        font-size: 1.4rem;
+    }
+
+
+    .profile-info-item {
+
+        padding: 0.7rem 0;
+
+        font-size: 0.85rem;
+    }
+
+
+    /* ---------- BUTTON ---------- */
+
+    .btn {
+
+        padding: 0.75rem 1rem;
+
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE - 480px
+   ========================================================= */
+
+@media screen and (max-width: 480px) {
+
+    .container {
+
+        padding-left: 12px;
+
+        padding-right: 12px;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    .logo img {
+
+        max-width: 105px;
+    }
+
+
+    nav#nav-menu {
+
+        width: 275px;
+
+        max-width: 92vw;
+    }
+
+
+    .nav-links > li > a {
+
+        padding: 0.75rem 0.85rem;
+
+        font-size: 0.9rem;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .hero-content h1,
+    .teams-hero h1 {
+
+        font-size: 1.8rem;
+    }
+
+
+    .hero-content p,
+    .teams-hero p {
+
+        font-size: 0.85rem;
+    }
+
+
+    /* ---------- CARDS ---------- */
+
+    .team-card-content {
+
+        padding: 1rem;
+    }
+
+
+    .team-card h3 {
+
+        font-size: 1.1rem;
+    }
+
+
+    /* ---------- TIMELINE ---------- */
+
+    .timeline {
+
+        padding-left: 20px;
+    }
+
+
+    .timeline-content {
+
+        padding: 0.9rem;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer-grid {
+
+        gap: 1.5rem;
+    }
+
+
+    .footer-col h4 {
+
+        font-size: 1rem;
+    }
+
+
+    .footer-links a {
+
+        font-size: 0.85rem;
+    }
+
+
+    /* ---------- TABLE ---------- */
+
+    table {
+
+        min-width: 600px;
+
+        font-size: 0.8rem;
+    }
+
+
+    /* ---------- PROFILE ---------- */
+
+    .profile-image {
+
+        width: 100px !important;
+
+        height: 100px !important;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE - 360px
+   ========================================================= */
+
+@media screen and (max-width: 360px) {
+
+    .container {
+
+        padding-left: 10px;
+
+        padding-right: 10px;
+    }
+
+
+    .logo img {
+
+        max-width: 95px;
+    }
+
+
+    .mobile-menu-btn {
+
+        width: 36px;
+
+        height: 36px;
+    }
+
+
+    .hero-content h1,
+    .teams-hero h1 {
+
+        font-size: 1.6rem;
+    }
+
+
+    .section-title {
+
+        font-size: 1.4rem;
+    }
+
+
+    .team-info-list li {
+
+        font-size: 0.8rem;
+    }
+
+
+    nav#nav-menu {
+
+        width: 260px;
+    }
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+   ========================================================= */
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+
+    nav#nav-menu {
+
+        height: calc(100vh - 60px);
+
+        overflow-y: auto;
+    }
+
+
+    .hero,
+    .teams-hero {
+
+        padding-top: 35px;
+
+        padding-bottom: 35px;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY / TOUCH
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .nav-links a,
+    .btn,
+    button {
+
+        min-height: 42px;
+    }
+
+
+    .dropdown-menu a {
+
+        min-height: 40px;
+    }
+}
+
+
+/* =========================================================
+   PREVENT HORIZONTAL SCROLL
+   ========================================================= */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+
+img {
+
+    max-width: 100%;
+
+    height: auto;
+}
+
+
+iframe {
+
+    max-width: 100%;
+}

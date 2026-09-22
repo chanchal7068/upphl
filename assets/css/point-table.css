@@ -1,0 +1,1123 @@
+/* =========================================================
+   UP PRO HANDBALL LEAGUE
+   POINT TABLE PAGE CSS
+========================================================= */
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+  --primary: #f97316;
+  --primary-dark: #ea580c;
+  --orange-light: #fff7ed;
+
+  --dark: #111827;
+  --dark-2: #1f2937;
+
+  --text: #374151;
+  --muted: #6b7280;
+
+  --white: #ffffff;
+  --border: #e5e7eb;
+
+  --success: #16a34a;
+  --success-light: #dcfce7;
+
+  --danger: #dc2626;
+  --danger-light: #fee2e2;
+
+  --draw: #d97706;
+  --draw-light: #fef3c7;
+
+  --shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+  --shadow-hover: 0 20px 50px rgba(15, 23, 42, 0.18);
+
+  --radius: 18px;
+}
+
+
+/* =========================================================
+   BODY BACKGROUND
+========================================================= */
+
+body {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.82),
+      rgba(255, 255, 255, 0.88)
+    ),
+    url("../images/handball-bg.jpg") center center / cover fixed no-repeat;
+
+  color: var(--text);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+  background: transparent;
+}
+
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.points-hero {
+  position: relative;
+
+  min-height: 330px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(17, 24, 39, 0.93),
+      rgba(234, 88, 12, 0.86)
+    ),
+    url("../images/league-details-banner.jpg") center / cover no-repeat;
+
+  color: var(--white);
+}
+
+
+/* Decorative circle */
+
+.points-hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  top: -220px;
+  right: -100px;
+
+  animation: heroCircle 8s linear infinite;
+}
+
+
+.points-hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  bottom: -160px;
+  left: -80px;
+
+  animation: heroCircle 10s linear infinite reverse;
+}
+
+
+@keyframes heroCircle {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.points-hero .container {
+  position: relative;
+  z-index: 2;
+
+  max-width: 900px;
+
+  padding: 60px 20px;
+}
+
+
+.points-hero h1 {
+  margin: 0 0 12px;
+
+  font-size: clamp(42px, 6vw, 72px);
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+
+  text-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+.points-hero p {
+  max-width: 720px;
+
+  margin: 0 auto;
+
+  font-size: 18px;
+
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================================================
+   STANDINGS SECTION
+========================================================= */
+
+.standings-section {
+  position: relative;
+
+  padding: 80px 0 100px;
+
+  background: transparent;
+}
+
+
+.standings-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.tabs-container {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 28px;
+
+  flex-wrap: wrap;
+}
+
+
+.tab-btn {
+  position: relative;
+
+  border: none;
+
+  padding: 14px 28px;
+
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  color: var(--dark);
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  border: 1px solid rgba(229, 231, 235, 0.9);
+
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.tab-btn:hover {
+  transform: translateY(-3px);
+
+  color: var(--primary);
+
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+
+.tab-btn.active {
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+
+  color: var(--white);
+
+  border-color: transparent;
+
+  box-shadow:
+    0 10px 28px rgba(249, 115, 22, 0.3);
+}
+
+
+.tab-btn.active::after {
+  content: "";
+
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  background: var(--white);
+
+  border-radius: 50%;
+
+  top: 7px;
+  right: 10px;
+
+  opacity: 0.8;
+}
+
+
+/* =========================================================
+   META NOTE
+========================================================= */
+
+.table-meta-note {
+  display: flex;
+
+  justify-content: center;
+
+  margin-bottom: 22px;
+}
+
+
+.table-meta-note p {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin: 0;
+
+  padding: 10px 18px;
+
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px solid rgba(229, 231, 235, 0.9);
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+
+.qualifier-dot {
+  width: 9px;
+  height: 9px;
+
+  display: inline-block;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  box-shadow:
+    0 0 0 5px rgba(249, 115, 22, 0.12);
+}
+
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.tab-content {
+  display: none;
+
+  animation: tableFade 0.45s ease;
+}
+
+
+.tab-content.active {
+  display: block;
+}
+
+
+@keyframes tableFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.table-responsive {
+  width: 100%;
+
+  overflow-x: auto;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border-radius: 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  box-shadow: var(--shadow);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  scrollbar-width: thin;
+}
+
+
+/* Custom scrollbar */
+
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+}
+
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--primary);
+
+  border-radius: 20px;
+}
+
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.standings-table {
+  width: 100%;
+
+  min-width: 1050px;
+
+  border-collapse: separate;
+
+  border-spacing: 0;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.standings-table thead th {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 5;
+
+  padding: 18px 14px;
+
+  background: linear-gradient(
+    135deg,
+    #111827,
+    #1f2937
+  );
+
+  color: var(--white);
+
+  text-align: center;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  border-bottom: 3px solid var(--primary);
+}
+
+
+/* First header */
+
+.standings-table thead th:first-child {
+  border-top-left-radius: 20px;
+}
+
+
+/* Last header */
+
+.standings-table thead th:last-child {
+  border-top-right-radius: 20px;
+}
+
+
+/* =========================================================
+   COLUMN WIDTHS
+========================================================= */
+
+.col-rank {
+  width: 70px;
+
+  text-align: center;
+}
+
+
+.col-team {
+  min-width: 230px;
+
+  text-align: left;
+}
+
+
+.col-stat {
+  width: 65px;
+
+  text-align: center;
+}
+
+
+.col-form {
+  width: 160px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.standings-table tbody td {
+  padding: 18px 14px;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--text);
+
+  background: rgba(255, 255, 255, 0.88);
+
+  text-align: center;
+
+  vertical-align: middle;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* Team text left */
+
+.standings-table tbody td.col-team {
+  text-align: left;
+}
+
+
+/* Last row */
+
+.standings-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   ROW HOVER
+========================================================= */
+
+.standings-table tbody tr {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.standings-table tbody tr:hover td {
+  background: #fff7ed;
+}
+
+
+.standings-table tbody tr:hover {
+  transform: scale(1.005);
+}
+
+
+/* =========================================================
+   QUALIFYING ROW
+========================================================= */
+
+.standings-table tbody tr.qualifying-row {
+  position: relative;
+}
+
+
+.standings-table tbody tr.qualifying-row td:first-child {
+  border-left: 4px solid var(--primary);
+}
+
+
+.standings-table tbody tr.qualifying-row {
+  background: linear-gradient(
+    90deg,
+    rgba(249, 115, 22, 0.05),
+    transparent
+  );
+}
+
+
+/* =========================================================
+   TEAM NAME
+========================================================= */
+
+.team-meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.team-name {
+  color: var(--dark);
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+.standings-table tbody tr:hover .team-name {
+  color: var(--primary-dark);
+}
+
+
+/* =========================================================
+   RANK
+========================================================= */
+
+.col-rank {
+  font-weight: 800;
+
+  color: var(--dark);
+}
+
+
+.qualifying-row .col-rank {
+  color: var(--primary-dark);
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   POINTS
+========================================================= */
+
+.col-stat.pts {
+  font-weight: 800;
+
+  color: var(--primary-dark);
+
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   GOAL DIFFERENCE
+========================================================= */
+
+.col-stat.positive {
+  color: var(--success);
+
+  font-weight: 700;
+}
+
+
+.col-stat.negative {
+  color: var(--danger);
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FORM BADGES
+========================================================= */
+
+.col-form {
+  white-space: nowrap;
+}
+
+
+.form-badge {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 27px;
+  height: 27px;
+
+  margin: 2px;
+
+  border-radius: 50%;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.form-badge:hover {
+  transform: translateY(-3px) scale(1.08);
+}
+
+
+/* Win */
+
+.form-badge.win {
+  background: var(--success-light);
+
+  color: var(--success);
+
+  box-shadow:
+    0 4px 10px rgba(22, 163, 74, 0.12);
+}
+
+
+/* Draw */
+
+.form-badge.draw {
+  background: var(--draw-light);
+
+  color: var(--draw);
+
+  box-shadow:
+    0 4px 10px rgba(217, 119, 6, 0.12);
+}
+
+
+/* Loss */
+
+.form-badge.loss {
+  background: var(--danger-light);
+
+  color: var(--danger);
+
+  box-shadow:
+    0 4px 10px rgba(220, 38, 38, 0.12);
+}
+
+
+/* =========================================================
+   RANK SPECIAL EFFECT
+========================================================= */
+
+.qualifying-row:nth-child(1) .col-rank::before {
+  content: "🏆";
+
+  display: block;
+
+  font-size: 13px;
+
+  margin-bottom: 2px;
+}
+
+
+.qualifying-row:nth-child(2) .col-rank::before {
+  content: "🥈";
+
+  display: block;
+
+  font-size: 12px;
+
+  margin-bottom: 2px;
+}
+
+
+.qualifying-row:nth-child(3) .col-rank::before {
+  content: "🥉";
+
+  display: block;
+
+  font-size: 12px;
+
+  margin-bottom: 2px;
+}
+
+
+/* =========================================================
+   TABLE FOOT / BORDER
+========================================================= */
+
+.standings-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 20px;
+}
+
+
+.standings-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 20px;
+}
+
+
+/* =========================================================
+   SECTION DECORATION
+========================================================= */
+
+.standings-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  border-radius: 50%;
+
+  background: rgba(249, 115, 22, 0.08);
+
+  filter: blur(2px);
+
+  top: 80px;
+
+  left: -180px;
+
+  pointer-events: none;
+}
+
+
+.standings-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  border-radius: 50%;
+
+  background: rgba(17, 24, 39, 0.05);
+
+  bottom: 80px;
+
+  right: -130px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TABLE CARD ANIMATION
+========================================================= */
+
+.table-responsive {
+  animation: tableAppear 0.7s ease both;
+}
+
+
+@keyframes tableAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+
+  .standings-section {
+    padding-top: 90px;
+    padding-bottom: 110px;
+  }
+
+  .standings-table tbody td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .points-hero {
+    min-height: 300px;
+  }
+
+  .points-hero h1 {
+    font-size: 54px;
+  }
+
+  .standings-section {
+    padding: 65px 0 80px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .points-hero {
+    min-height: 270px;
+  }
+
+  .points-hero .container {
+    padding: 50px 20px;
+  }
+
+  .points-hero h1 {
+    font-size: 48px;
+  }
+
+  .points-hero p {
+    font-size: 16px;
+  }
+
+  .standings-section {
+    padding: 55px 0 70px;
+  }
+
+  .tabs-container {
+    margin-bottom: 22px;
+  }
+
+  .tab-btn {
+    padding: 12px 22px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  body {
+    background-attachment: scroll;
+  }
+
+  .points-hero {
+    min-height: 250px;
+
+    background-attachment: scroll;
+  }
+
+  .points-hero .container {
+    padding: 45px 18px;
+  }
+
+  .points-hero h1 {
+    font-size: 40px;
+
+    letter-spacing: -0.5px;
+  }
+
+  .points-hero p {
+    font-size: 15px;
+
+    line-height: 1.6;
+  }
+
+  .standings-section {
+    padding: 45px 12px 60px;
+  }
+
+  .tabs-container {
+    gap: 8px;
+  }
+
+  .tab-btn {
+    padding: 11px 17px;
+
+    font-size: 13px;
+  }
+
+  .table-meta-note p {
+    font-size: 12px;
+
+    text-align: center;
+
+    padding: 9px 14px;
+  }
+
+  .table-responsive {
+    border-radius: 16px;
+
+    box-shadow:
+      0 12px 30px rgba(15, 23, 42, 0.10);
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .points-hero {
+    min-height: 230px;
+  }
+
+  .points-hero h1 {
+    font-size: 34px;
+  }
+
+  .points-hero p {
+    font-size: 14px;
+  }
+
+  .standings-section {
+    padding: 35px 8px 50px;
+  }
+
+  .tabs-container {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .tab-btn {
+    width: 100%;
+
+    max-width: 320px;
+  }
+
+  .table-meta-note {
+    padding: 0 5px;
+  }
+
+  .table-meta-note p {
+    line-height: 1.5;
+  }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICES
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .points-hero h1 {
+    font-size: 30px;
+  }
+
+  .points-hero p {
+    font-size: 13px;
+  }
+
+  .tab-btn {
+    font-size: 12px;
+
+    padding: 10px 14px;
+  }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.tab-btn:focus-visible {
+  outline: 3px solid rgba(249, 115, 22, 0.35);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+}

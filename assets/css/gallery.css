@@ -1,0 +1,953 @@
+/* =========================================================
+   UP PRO HANDBALL LEAGUE
+   GALLERY PAGE
+   WHITE + ORANGE PROFESSIONAL THEME
+   ========================================================= */
+
+:root {
+  --orange: #f47b20;
+  --orange-dark: #d85d0b;
+  --orange-light: #fff1e7;
+  --dark: #202020;
+  --text: #555;
+  --white: #ffffff;
+  --border: #e7e7e7;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: var(--dark);
+  overflow-x: clip;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 3px 18px rgba(0, 0, 0, 0.06);
+}
+
+.nav-links > li > a {
+  transition: 0.3s ease;
+}
+
+.nav-links > li > a:hover,
+.nav-links > li > a.active {
+  color: var(--orange);
+}
+
+.nav-links > li > a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 0;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 20px;
+  transform: translateX(-50%);
+  transition: 0.3s ease;
+}
+
+.nav-links > li > a:hover::after,
+.nav-links > li > a.active::after {
+  width: 65%;
+}
+
+/* =========================================================
+   GALLERY HERO
+   ========================================================= */
+
+.gallery-hero {
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 15, 15, 0.90),
+      rgba(15, 15, 15, 0.60),
+      rgba(244, 123, 32, 0.30)
+    ),
+    url("../images/fixtures-banner.jpeg")
+    center/cover no-repeat;
+}
+
+/* Decorative circle */
+
+.gallery-hero::before {
+  content: "";
+  position: absolute;
+
+  width: 340px;
+  height: 340px;
+
+  right: -140px;
+  top: -130px;
+
+  border: 60px solid rgba(244, 123, 32, 0.18);
+  border-radius: 50%;
+
+  animation: rotateCircle 16s linear infinite;
+}
+
+.gallery-hero::after {
+  content: "";
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  left: -80px;
+  bottom: -90px;
+
+  background: radial-gradient(circle, rgba(244, 123, 32, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.gallery-hero .container {
+  position: relative;
+  z-index: 2;
+  padding: 60px 20px;
+}
+
+.gallery-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.gallery-hero p {
+  font-size: 1.1rem;
+  color: #e2e8f0;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   GALLERY SECTION
+   ========================================================= */
+
+.gallery-section {
+  padding: 75px 0;
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.94),
+      rgba(255, 255, 255, 0.94)
+    ),
+    url("../images/aboutus-banner.jpeg")
+    center/cover fixed no-repeat;
+}
+
+/* =========================================================
+   FILTER BUTTONS
+   ========================================================= */
+
+.filters-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-bottom: 45px;
+}
+
+.filter-btn {
+  border: 1px solid #ddd;
+
+  background: #fff;
+  color: #555;
+
+  padding: 10px 18px;
+
+  border-radius: 30px;
+
+  font-family: "Outfit", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.filter-btn:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: var(--orange);
+  color: #fff;
+
+  border-color: var(--orange);
+
+  box-shadow: 0 7px 18px rgba(244, 123, 32, 0.22);
+}
+
+.filter-btn.active:hover {
+  background: var(--orange-dark);
+  color: #fff;
+}
+
+/* =========================================================
+   GALLERY GRID
+   ========================================================= */
+
+.gallery-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+/* =========================================================
+   GALLERY ITEM
+   ========================================================= */
+
+.gallery-item {
+  position: relative;
+
+  height: 300px;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: #eee;
+
+  box-shadow: var(--shadow);
+
+  cursor: pointer;
+
+  opacity: 1;
+
+  transform: scale(1);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 18px 40px rgba(244, 123, 32, 0.18);
+}
+
+/* =========================================================
+   HIDDEN ITEMS
+   ========================================================= */
+
+.gallery-item.hidden {
+  display: none;
+}
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition:
+    transform 0.6s ease,
+    filter 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.10);
+  filter: brightness(0.75);
+}
+
+/* =========================================================
+   IMAGE OVERLAY
+   ========================================================= */
+
+.gallery-item-overlay {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 65px 20px 20px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.88)
+    );
+
+  transform: translateY(10px);
+
+  transition:
+    transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   TAG
+   ========================================================= */
+
+.gallery-tag {
+  display: inline-block;
+
+  color: #fff;
+  background: var(--orange);
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  margin-bottom: 7px;
+}
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.gallery-item-title {
+  display: block;
+
+  color: #fff;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+/* =========================================================
+   ORANGE TOP BORDER
+   ========================================================= */
+
+.gallery-item::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: var(--orange);
+
+  z-index: 5;
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover::before {
+  transform: scaleX(1);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  background: #181818;
+}
+
+.footer-links a {
+  transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--orange);
+  padding-left: 5px;
+}
+
+.footer-col h4::after {
+  content: "";
+
+  display: block;
+
+  width: 35px;
+  height: 3px;
+
+  margin-top: 8px;
+
+  background: var(--orange);
+
+  border-radius: 20px;
+}
+
+.social-icons a {
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: var(--orange);
+  color: #fff;
+
+  transform: translateY(-4px);
+}
+
+.footer-contact i {
+  color: var(--orange);
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotateCircle {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-item {
+    height: 280px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .gallery-hero {
+    min-height: 320px;
+    text-align: center;
+  }
+
+  .gallery-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .gallery-hero p {
+    font-size: 0.95rem;
+  }
+
+  .gallery-section {
+    padding: 55px 0;
+
+    background-attachment: scroll;
+  }
+
+  .filters-container {
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+
+  .filter-btn {
+    padding: 8px 13px;
+    font-size: 0.78rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .gallery-item {
+    height: 300px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .gallery-hero {
+    min-height: 285px;
+  }
+
+  .gallery-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .gallery-hero p {
+    font-size: 0.9rem;
+  }
+
+  .gallery-section {
+    padding: 45px 0;
+  }
+
+  .filters-container {
+    justify-content: flex-start;
+  }
+
+  .filter-btn {
+    padding: 7px 11px;
+    font-size: 0.72rem;
+  }
+
+  .gallery-item {
+    height: 260px;
+  }
+
+  .gallery-item-title {
+    font-size: 0.95rem;
+  }
+}
+
+/* =========================================================
+   SEASON SELECTOR BAR
+   ========================================================= */
+.season-selector-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.season-selector-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.season-selector-title i {
+  color: var(--orange);
+}
+
+.season-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 6px;
+  border-radius: 40px;
+  border: 1px solid #e2e8f0;
+}
+
+.season-pill {
+  border: none;
+  background: transparent;
+  color: #475569;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.season-pill:hover {
+  color: var(--orange);
+  background: rgba(244, 123, 32, 0.08);
+}
+
+.season-pill.active {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(244, 123, 32, 0.25);
+}
+
+.gallery-season-tag {
+  display: inline-block;
+  color: #1e293b;
+  background: #fff;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  margin-right: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* =========================================================
+   ENHANCED LIGHTBOX & GALLERY VIEWER
+   ========================================================= */
+.gallery-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0f172a;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(244, 123, 32, 0.2);
+  border-color: rgba(244, 123, 32, 0.4);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.1) 60%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  pointer-events: none;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+  opacity: 1;
+}
+
+.gallery-item-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.gallery-season-tag {
+  display: inline-block;
+  color: #fff;
+  background: var(--orange);
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(244, 123, 32, 0.35);
+}
+
+.gallery-tag {
+  display: inline-block;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.gallery-zoom-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 44px;
+  height: 44px;
+  background: rgba(244, 123, 32, 0.9);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.gallery-item:hover .gallery-zoom-badge {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Lightbox Fullscreen Modal */
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(10, 15, 30, 0.96);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+
+.gallery-lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 18px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10002;
+}
+
+.lightbox-counter {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lightbox-category-badge {
+  background: var(--orange);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.lightbox-close-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.lightbox-close-btn:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  transform: scale(1.1);
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  z-index: 10001;
+}
+
+.lightbox-nav-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 8px 25px rgba(244, 123, 32, 0.4);
+}
+
+.lightbox-prev-btn {
+  left: 25px;
+}
+
+.lightbox-next-btn {
+  right: 25px;
+}
+
+.lightbox-main-stage {
+  max-width: 85vw;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.lightbox-main-img {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.lightbox-thumbnails-bar {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  max-width: 90vw;
+  overflow-x: auto;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  scrollbar-width: none;
+}
+
+.lightbox-thumbnails-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.lightbox-thumb-item {
+  width: 50px;
+  height: 38px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.5;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.lightbox-thumb-item:hover, .lightbox-thumb-item.active {
+  opacity: 1;
+  border-color: var(--orange);
+  transform: scale(1.08);
+}
+
+.lightbox-thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .lightbox-nav-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+  .lightbox-prev-btn { left: 10px; }
+  .lightbox-next-btn { right: 10px; }
+  .lightbox-main-stage { max-width: 96vw; max-height: 72vh; }
+  .lightbox-main-img { max-height: 68vh; }
+  .lightbox-topbar { padding: 12px 16px; }
+  .lightbox-thumbnails-bar { display: none; }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

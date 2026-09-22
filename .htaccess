@@ -1,0 +1,11 @@
+# .htaccess for UPPHL
+RewriteEngine On
+RewriteBase /up-pro-handball-league/
+
+# Default Directory Index
+DirectoryIndex index.php
+
+# 301 Redirect .html requests to corresponding .php file for clean URLs & legacy compatibility
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)\.html$ $1.php [R=301,L,QSA]
+

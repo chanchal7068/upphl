@@ -1,0 +1,627 @@
+/* =========================================================
+   UP PRO HANDBALL LEAGUE
+   FIXTURES PAGE
+   White + Orange Professional Theme
+   ========================================================= */
+
+:root {
+  --orange: #f47b20;
+  --orange-dark: #d85d0b;
+  --orange-light: #fff1e7;
+  --dark: #1e293b;
+  --text: #475569;
+  --white: #fff;
+  --border: #e2e8f0;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f8fafc;
+  color: var(--dark);
+  overflow-x: clip;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.fixtures-hero {
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.92),
+      rgba(15, 23, 42, 0.75),
+      rgba(244, 123, 32, 0.35)
+    ),
+    url("../images/fixtures-banner.jpeg")
+    center/cover no-repeat;
+}
+
+.fixtures-hero::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -100px;
+  top: -100px;
+  border: 50px solid rgba(244, 123, 32, 0.2);
+  border-radius: 50%;
+  animation: rotateCircle 18s linear infinite;
+}
+
+.fixtures-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.fixtures-hero h1 {
+  color: #fff;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.fixtures-hero h1::first-letter {
+  color: var(--orange);
+}
+
+.fixtures-hero p {
+  max-width: 700px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   FIXTURES SECTION & FILTERS
+   ========================================================= */
+
+.fixtures-section {
+  padding: 60px 0 90px;
+  background: #f8fafc;
+}
+
+.fixtures-container {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.fixtures-filter-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 45px;
+}
+
+.fixtures-season-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.fixtures-tab-btn {
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  background: #ffffff;
+  color: #334155;
+  font-family: "Outfit", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fixtures-tab-btn:hover {
+  transform: translateY(-2px);
+  color: var(--orange);
+  box-shadow: 0 8px 22px rgba(244, 123, 32, 0.18);
+}
+
+.fixtures-tab-btn.active {
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 25px rgba(244, 123, 32, 0.35);
+}
+
+.fixtures-status-pills {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.status-pill-btn {
+  border: 1px solid var(--border);
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: #ffffff;
+  color: #64748b;
+  font-family: "Outfit", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.status-pill-btn:hover {
+  background: #f1f5f9;
+  color: var(--dark);
+}
+
+.status-pill-btn.active {
+  background: #0f172a;
+  color: #fff;
+  border-color: #0f172a;
+}
+
+/* =========================================================
+   DAY GROUPING & HEADERS
+   ========================================================= */
+
+.fixture-day-group {
+  margin-bottom: 45px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+}
+
+.fixture-day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  border-bottom: 2px solid var(--orange);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.day-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.day-badge {
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(244, 123, 32, 0.4);
+}
+
+.day-date-text {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: 0.2px;
+}
+
+.day-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.day-match-count {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.day-matches-list {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: #ffffff;
+}
+
+/* =========================================================
+   MATCH WRAPPER & TOP BAR
+   ========================================================= */
+
+.fixture-match-wrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.fixture-match-wrapper:hover {
+  transform: translateY(-4px);
+  border-color: rgba(244, 123, 32, 0.4);
+  box-shadow: 0 12px 30px rgba(244, 123, 32, 0.12);
+}
+
+.match-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: #f8fafc;
+  border-bottom: 1px solid #edf2f7;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.match-stage-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.match-num-pill {
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.match-stage-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.match-top-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.match-time-chip {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  background: #e2e8f0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.match-time-chip i {
+  color: var(--orange);
+}
+
+.fixture-status-tag {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.fixture-status-tag.upcoming {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+.fixture-status-tag.live {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.fixture-status-tag.completed {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.fixture-status-tag.completed i {
+  color: #16a34a;
+}
+
+/* =========================================================
+   MATCH CARD (CLASH)
+   ========================================================= */
+
+.match-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  align-items: center;
+  min-height: 160px;
+  padding: 24px 30px;
+  background: #ffffff;
+}
+
+/* =========================================================
+   TEAM BOXES
+   ========================================================= */
+
+.match-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px;
+  text-align: center;
+}
+
+.fixture-team-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  padding: 6px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border: 2.5px solid rgba(244, 123, 32, 0.25);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.fixture-team-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.fixture-match-wrapper:hover .fixture-team-logo {
+  transform: scale(1.08) translateY(-3px);
+  border-color: var(--orange);
+  box-shadow: 0 12px 28px rgba(244, 123, 32, 0.3);
+}
+
+.match-team .fixture-team-name {
+  color: #0f172a;
+  font-size: 1.18rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  line-height: 1.25;
+  transition: 0.3s ease;
+}
+
+.fixture-match-wrapper:hover .match-team .fixture-team-name {
+  color: var(--orange-dark);
+}
+
+/* =========================================================
+   CENTER MATCH INFORMATION
+   ========================================================= */
+
+.match-versus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px 20px;
+  border-left: 1px dashed #e2e8f0;
+  border-right: 1px dashed #e2e8f0;
+}
+
+/* VS BADGE */
+.vs-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 0.95rem;
+  font-weight: 900;
+  box-shadow: 0 6px 18px rgba(244, 123, 32, 0.35);
+  margin-bottom: 12px;
+  transition: 0.35s ease;
+}
+
+.fixture-match-wrapper:hover .vs-badge {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.match-time {
+  color: #0f172a;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.match-venue {
+  color: #64748b;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.45;
+  max-width: 280px;
+}
+
+/* SCORE STYLES */
+.match-score {
+  color: #0f172a;
+  font-size: 1.85rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  font-family: "Outfit", sans-serif;
+}
+
+.score-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.badge-live-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #dc2626;
+  display: inline-block;
+  animation: liveBlink 1s infinite alternate;
+}
+
+@keyframes liveBlink {
+  0% { opacity: 0.3; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes rotateCircle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .fixtures-container {
+    max-width: 92%;
+  }
+
+  .match-card {
+    grid-template-columns: 1fr 1.2fr 1fr;
+    padding: 20px 15px;
+  }
+
+  .match-team .fixture-team-name {
+    font-size: 1.05rem;
+  }
+
+  .fixture-team-logo {
+    width: 68px;
+    height: 68px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fixtures-hero {
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .fixtures-hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .fixtures-section {
+    padding: 40px 0 70px;
+  }
+
+  .fixture-day-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 18px;
+    gap: 8px;
+  }
+
+  .day-matches-list {
+    padding: 16px;
+    gap: 18px;
+  }
+
+  .match-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .match-top-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .match-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px 14px;
+  }
+
+  .match-versus {
+    border-left: none;
+    border-right: none;
+    border-top: 1px dashed #e2e8f0;
+    border-bottom: 1px dashed #e2e8f0;
+    padding: 16px 10px;
+  }
+
+  .vs-badge {
+    width: 44px;
+    height: 44px;
+    font-size: 0.85rem;
+  }
+
+  .match-score {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,73 @@
+/* =========================================================
+   UP PRO HANDBALL LEAGUE
+   REFUND POLICY - DEDICATED STYLESHEET
+   ========================================================= */
+
+@import url("privacy-policy.css");
+
+/* Timeline & Process Cards */
+.refund-step-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.refund-step-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.refund-step-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--orange);
+  box-shadow: var(--shadow-orange);
+}
+
+.refund-step-num {
+  width: 38px;
+  height: 38px;
+  background: var(--orange);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(244, 123, 32, 0.35);
+}
+
+.refund-step-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.refund-step-card p {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.timeline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #dcfce7;
+  color: #166534;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-top: 10px;
+}

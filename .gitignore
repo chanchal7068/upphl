@@ -1,0 +1,13 @@
+# User uploads
+/uploads/
+uploads/
+
+# Environment / Config
+.env
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

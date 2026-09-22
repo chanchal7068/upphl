@@ -1,0 +1,693 @@
+/* =========================================================
+   UP PRO HANDBALL LEAGUE
+   ABOUT PAGE - WHITE + ORANGE PROFESSIONAL THEME
+   ========================================================= */
+
+:root {
+  --orange: #f47b20;
+  --orange-dark: #d95d0b;
+  --orange-light: #fff1e7;
+  --white: #ffffff;
+  --text-dark: #17202a;
+  --text: #4b5563;
+  --border: #eeeeee;
+  --shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  --shadow-orange: 0 15px 35px rgba(244, 123, 32, 0.20);
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--text-dark);
+  overflow-x: clip;
+}
+
+main {
+  overflow: visible;
+}
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.top-bar {
+  background: #171717;
+  color: #ffffff;
+  position: relative;
+  z-index: 1000;
+}
+
+.top-bar a {
+  transition: all 0.3s ease;
+}
+
+.top-bar a:hover {
+  color: var(--orange);
+}
+
+.top-bar-right a {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.35s ease;
+}
+
+.top-bar-right a:hover {
+  background: var(--orange);
+  color: #ffffff;
+  transform: translateY(-3px) rotate(5deg);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.header-container {
+  min-height: 82px;
+}
+
+.nav-links > li > a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links > li > a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 0;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 20px;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-links > li > a:hover,
+.nav-links > li > a.active {
+  color: var(--orange);
+}
+
+.nav-links > li > a:hover::after,
+.nav-links > li > a.active::after {
+  width: 70%;
+}
+
+/* =========================================================
+   ABOUT HERO
+   ========================================================= */
+
+.about-hero {
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12, 12, 12, 0.86),
+      rgba(12, 12, 12, 0.58),
+      rgba(244, 123, 32, 0.22)
+    ),
+    url("../images/aboutus-banner.jpeg")
+    center/cover no-repeat;
+}
+
+/* Orange decorative circle */
+
+.about-hero::before {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  right: -100px;
+  top: -100px;
+  border: 70px solid rgba(244, 123, 32, 0.18);
+  border-radius: 50%;
+  z-index: -1;
+  animation: heroCircle 8s ease-in-out infinite;
+}
+
+.about-hero::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  right: 13%;
+  bottom: -70px;
+  border-radius: 50%;
+  background: rgba(244, 123, 32, 0.20);
+  filter: blur(3px);
+  animation: floatingCircle 5s ease-in-out infinite;
+}
+
+.about-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.about-hero h1 {
+  color: #ffffff;
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  line-height: 1.05;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  animation: heroTitle 0.9s ease forwards;
+}
+
+.about-hero h1::first-letter {
+  color: var(--orange);
+}
+
+.about-hero p {
+  max-width: 720px;
+  color: rgba(255, 255, 255, 0.90);
+  font-size: 1.12rem;
+  line-height: 1.8;
+  animation: heroText 1s ease 0.15s both;
+}
+
+/* =========================================================
+   COMMON SECTION
+   ========================================================= */
+
+.about-section {
+  position: relative;
+  padding: 90px 0;
+  background: #ffffff;
+}
+
+.about-section:nth-of-type(odd) {
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(244, 123, 32, 0.06),
+      transparent 28%
+    ),
+    #ffffff;
+}
+
+/* =========================================================
+   ABOUT INTRO
+   ========================================================= */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 70px;
+}
+
+.about-text {
+  position: relative;
+}
+
+.about-text::before {
+  content: "";
+  width: 65px;
+  height: 5px;
+  display: block;
+  margin-bottom: 18px;
+  background: var(--orange);
+  border-radius: 50px;
+}
+
+.about-text h2 {
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  line-height: 1.15;
+  color: var(--text-dark);
+  font-weight: 800;
+  margin-bottom: 25px;
+  letter-spacing: -0.7px;
+}
+
+.about-text h2::after {
+  content: "";
+  display: block;
+  width: 45px;
+  height: 3px;
+  background: #222;
+  margin-top: 13px;
+  border-radius: 20px;
+}
+
+.about-text p {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+/* =========================================================
+   ABOUT IMAGE
+   ========================================================= */
+
+.about-image {
+  position: relative;
+  border-radius: 24px;
+  padding: 10px;
+  background: linear-gradient(
+    135deg,
+    var(--orange),
+    #ffb16e
+  );
+  box-shadow: var(--shadow-orange);
+  transform: rotate(2deg);
+  transition: all 0.5s ease;
+}
+
+.about-image:hover {
+  transform: rotate(0deg) translateY(-10px);
+  box-shadow: 0 25px 55px rgba(244, 123, 32, 0.28);
+}
+
+.about-image::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 3px solid var(--orange);
+  border-radius: 50%;
+  left: -45px;
+  bottom: -45px;
+  z-index: -1;
+  opacity: 0.45;
+  animation: rotateShape 12s linear infinite;
+}
+
+.about-image::after {
+  content: "";
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background: #171717;
+  border-radius: 10px;
+  right: -20px;
+  top: 30px;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+.about-image img {
+  width: 100%;
+  height: 420px;
+  display: block;
+  object-fit: cover;
+  border-radius: 18px;
+  transition: transform 0.6s ease;
+}
+
+.about-image:hover img {
+  transform: scale(1.04);
+}
+
+/* =========================================================
+   PRESIDENT SECTION
+   ========================================================= */
+
+.president-section {
+  position: relative;
+  padding: 95px 0;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(244, 123, 32, 0.96),
+      rgba(214, 85, 5, 0.96)
+    ),
+    url("../images/aboutus-banner.jpeg")
+    center/cover no-repeat;
+}
+
+.president-section::before {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border: 80px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  top: -230px;
+  right: -150px;
+  animation: rotateShape 18s linear infinite;
+}
+
+.president-section::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 50px solid rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+  bottom: -180px;
+  left: -100px;
+}
+
+.president-card {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  align-items: center;
+  gap: 55px;
+  padding: 55px;
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.20);
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.president-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================================
+   PRESIDENT IMAGE
+   ========================================================= */
+
+.president-img {
+  position: relative;
+  width: 260px;
+  height: 310px;
+  /* padding: 8px;
+  background: linear-gradient(
+    135deg,
+    var(--orange),
+    #ffb16e
+  );
+  border-radius: 20px;
+  transform: none !important;
+  transition: var(--transition);
+  box-shadow: 0 10px 25px rgba(244, 123, 32, 0.25); */
+  flex-shrink: 0;
+}
+
+.president-img:hover {
+  transform: none !important;
+}
+
+.president-img::after {
+  display: none;
+}
+
+.president-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 14px;
+  display: block;
+}
+
+/* =========================================================
+   PRESIDENT QUOTE
+   ========================================================= */
+
+.president-quote {
+  position: relative;
+}
+
+.president-quote::before {
+  content: "\201C";
+  position: absolute;
+  left: -15px;
+  top: -65px;
+  font-size: 130px;
+  line-height: 1;
+  font-weight: 800;
+  color: rgba(244, 123, 32, 0.12);
+}
+
+.president-quote blockquote {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 25px;
+  color: #252525;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.8;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.president-quote cite {
+  display: block;
+  color: var(--orange);
+  font-size: 1.1rem;
+  font-weight: 800;
+  font-style: normal;
+  margin-bottom: 5px;
+}
+
+.president-quote span {
+  color: #777;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   CORE VALUES SECTION
+   ========================================================= */
+
+.about-section h2[style] {
+  position: relative;
+  margin-bottom: 50px;
+  font-weight: 800 !important;
+}
+
+.about-section h2[style]::after {
+  content: "";
+  width: 65px;
+  height: 4px;
+  background: var(--orange);
+  display: block;
+  margin: 15px auto 0;
+  border-radius: 50px;
+}
+
+/* =========================================================
+   VALUES GRID
+   ========================================================= */
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.value-card {
+  position: relative;
+  padding: 42px 32px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.055);
+  overflow: hidden;
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.value-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s ease;
+}
+
+.value-card::after {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(244, 123, 32, 0.07);
+  right: -45px;
+  bottom: -45px;
+  transition: 0.5s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(244, 123, 32, 0.35);
+  box-shadow: 0 20px 45px rgba(244, 123, 32, 0.14);
+}
+
+.value-card:hover::before {
+  transform: scaleX(1);
+}
+
+.value-card:hover::after {
+  transform: scale(1.6);
+}
+
+.value-card i {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--orange);
+  background: var(--orange-light);
+  border-radius: 18px;
+  font-size: 30px;
+
+  transition:
+    transform 0.4s ease,
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+.value-card:hover i {
+  background: var(--orange);
+  color: #ffffff;
+  transform: rotate(-7deg) scale(1.08);
+}
+
+.value-card h3 {
+  color: var(--text-dark);
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 13px;
+}
+
+.value-card p {
+  color: var(--text);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* =========================================================
+   RESPONSIVE MEDIA QUERIES FOR ABOUT PAGE
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .about-hero {
+    min-height: auto;
+    padding: 60px 0;
+  }
+
+  .about-hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+  }
+
+  .about-section {
+    padding: 55px 0;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 35px;
+  }
+
+  .about-image {
+    transform: none !important;
+    margin-top: 10px;
+  }
+
+  .about-image img {
+    height: 280px;
+  }
+
+  .president-section {
+    padding: 60px 0;
+  }
+
+  .president-card {
+    grid-template-columns: 1fr !important;
+    padding: 30px 20px;
+    gap: 25px;
+    text-align: center;
+    border-radius: 20px;
+  }
+
+  .president-img {
+    margin: 0 auto;
+    width: 200px;
+    height: 240px;
+    transform: none !important;
+  }
+
+  .president-quote blockquote {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .value-card {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-hero {
+    padding: 45px 0;
+    text-align: center;
+  }
+
+  .about-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-image img {
+    height: 220px;
+  }
+
+  .president-card {
+    padding: 24px 16px;
+  }
+
+  .president-img {
+    width: 170px;
+    height: 200px;
+  }
+
+  .president-quote::before {
+    font-size: 80px;
+    top: -40px;
+    left: -5px;
+  }
+}
