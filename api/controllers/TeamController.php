@@ -210,11 +210,18 @@ class TeamController {
         // 3. Handle Coach Data
         $coachName = trim($data['coachName'] ?? ($existing['coach']['name'] ?? ''));
         $coachRole = trim($data['coachRole'] ?? ($existing['coach']['role'] ?? 'Head Coach'));
-        $coachPhoto = $existing['coach']['photoUrl'] ?? '';
+        $coachPhoto = '';
         if (!empty($files['coachPhotoFile']['name']) && $files['coachPhotoFile']['error'] === UPLOAD_ERR_OK) {
             $uploaded = $this->handleFileUpload($files['coachPhotoFile'], 'coach_' . $teamId);
             if ($uploaded) $coachPhoto = $uploaded;
+        } elseif (($data['coachPhotoRemove'] ?? '0') === '1') {
+            $coachPhoto = '';
+        } elseif (!empty($data['coachPhotoUrl'])) {
+            $coachPhoto = trim($data['coachPhotoUrl']);
+        } elseif ($existing !== null && !empty($existing['coach']['photoUrl']) && ($data['coachPhotoRemove'] ?? '0') !== '1') {
+            $coachPhoto = $existing['coach']['photoUrl'];
         }
+
         $coachInitials = $this->getInitials($coachName ?: 'Coach');
         $coach = [
             'name'       => $coachName,
@@ -227,11 +234,18 @@ class TeamController {
         // 4. Handle Owner Data
         $ownerName = trim($data['ownerName'] ?? ($existing['owner']['name'] ?? ''));
         $ownerRole = trim($data['ownerRole'] ?? ($existing['owner']['role'] ?? 'Franchise Owner'));
-        $ownerPhoto = $existing['owner']['photoUrl'] ?? '';
+        $ownerPhoto = '';
         if (!empty($files['ownerPhotoFile']['name']) && $files['ownerPhotoFile']['error'] === UPLOAD_ERR_OK) {
             $uploaded = $this->handleFileUpload($files['ownerPhotoFile'], 'owner_' . $teamId);
             if ($uploaded) $ownerPhoto = $uploaded;
+        } elseif (($data['ownerPhotoRemove'] ?? '0') === '1') {
+            $ownerPhoto = '';
+        } elseif (!empty($data['ownerPhotoUrl'])) {
+            $ownerPhoto = trim($data['ownerPhotoUrl']);
+        } elseif ($existing !== null && !empty($existing['owner']['photoUrl']) && ($data['ownerPhotoRemove'] ?? '0') !== '1') {
+            $ownerPhoto = $existing['owner']['photoUrl'];
         }
+
         $owner = [
             'name'       => $ownerName,
             'role'       => $ownerRole ?: 'Franchise Owner',
@@ -243,11 +257,18 @@ class TeamController {
         // 5. Handle Captain Data
         $captainName = trim($data['captainName'] ?? ($existing['captain']['name'] ?? ''));
         $captainRole = trim($data['captainRole'] ?? ($existing['captain']['role'] ?? 'Team Captain'));
-        $captainPhoto = $existing['captain']['photoUrl'] ?? '';
+        $captainPhoto = '';
         if (!empty($files['captainPhotoFile']['name']) && $files['captainPhotoFile']['error'] === UPLOAD_ERR_OK) {
             $uploaded = $this->handleFileUpload($files['captainPhotoFile'], 'captain_' . $teamId);
             if ($uploaded) $captainPhoto = $uploaded;
+        } elseif (($data['captainPhotoRemove'] ?? '0') === '1') {
+            $captainPhoto = '';
+        } elseif (!empty($data['captainPhotoUrl'])) {
+            $captainPhoto = trim($data['captainPhotoUrl']);
+        } elseif ($existing !== null && !empty($existing['captain']['photoUrl']) && ($data['captainPhotoRemove'] ?? '0') !== '1') {
+            $captainPhoto = $existing['captain']['photoUrl'];
         }
+
         $captain = [
             'name'       => $captainName,
             'role'       => $captainRole ?: 'Team Captain',
@@ -267,10 +288,29 @@ class TeamController {
             foreach ($data['playerNames'] as $k => $pName) {
                 $pName = trim($pName);
                 if (!empty($pName)) {
+                    $pPhoto = trim($data['playerPhotos'][$k] ?? '');
+                    
+                    // Check if file uploaded for this player index
+                    if (!empty($files['playerPhotoFiles']['name'][$k]) && $files['playerPhotoFiles']['error'][$k] === UPLOAD_ERR_OK) {
+                        $singleFile = [
+                            'name'     => $files['playerPhotoFiles']['name'][$k],
+                            'type'     => $files['playerPhotoFiles']['type'][$k] ?? '',
+                            'tmp_name' => $files['playerPhotoFiles']['tmp_name'][$k],
+                            'error'    => $files['playerPhotoFiles']['error'][$k],
+                            'size'     => $files['playerPhotoFiles']['size'][$k] ?? 0
+                        ];
+                        $uploadedPlayerPhoto = $this->handleFileUpload($singleFile, 'player_' . $teamId . '_' . $k);
+                        if ($uploadedPlayerPhoto) {
+                            $pPhoto = $uploadedPlayerPhoto;
+                        }
+                    }
+
                     $players[] = [
-                        'name' => $pName,
-                        'pos'  => trim($data['playerPositions'][$k] ?? 'Player'),
-                        'no'   => trim($data['playerNumbers'][$k] ?? '00')
+                        'name'     => $pName,
+                        'pos'      => trim($data['playerPositions'][$k] ?? 'Player'),
+                        'no'       => trim($data['playerNumbers'][$k] ?? '00'),
+                        'photoUrl' => $pPhoto,
+                        'photo'    => $pPhoto
                     ];
                 }
             }

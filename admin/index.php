@@ -4398,8 +4398,19 @@ if ($isLogged) {
                             <input type="text" name="coachRole" id="teamCoachRoleInput" placeholder="Head Coach" value="Head Coach">
                         </div>
                         <div class="input-group">
-                            <label style="font-size: 11px;">Coach Photo (Optional)</label>
-                            <input type="file" name="coachPhotoFile" id="teamCoachPhotoFileInput" accept="image/*" style="font-size: 11px;">
+                            <label style="font-size: 11px;">Coach Photo</label>
+                            <input type="file" name="coachPhotoFile" id="teamCoachPhotoFileInput" accept="image/*" style="font-size: 11px;" onchange="previewLeadershipPhoto(this, 'teamCoachPhotoPreview', 'teamCoachPhotoPreviewWrap', 'teamCoachPhotoRemoveInput')">
+                            <input type="hidden" name="coachPhotoUrl" id="teamCoachPhotoUrlInput">
+                            <input type="hidden" name="coachPhotoRemove" id="teamCoachPhotoRemoveInput" value="0">
+                            <div id="teamCoachPhotoPreviewWrap" style="display: none; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; background: #fff; padding: 6px 8px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img id="teamCoachPhotoPreview" src="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7;" alt="Coach Photo">
+                                    <span style="font-size: 11px; color: #475569; font-weight: 600;">Coach Photo</span>
+                                </div>
+                                <button type="button" onclick="clearLeadershipPhoto('Coach')" style="background: #fee2e2; color: #dc2626; border: none; border-radius: 4px; padding: 3px 8px; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 4px;" title="Remove Photo">
+                                    <i class="fa-solid fa-trash"></i> Remove
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -4415,8 +4426,19 @@ if ($isLogged) {
                             <input type="text" name="ownerRole" id="teamOwnerRoleInput" placeholder="Franchise Owner" value="Franchise Owner">
                         </div>
                         <div class="input-group">
-                            <label style="font-size: 11px;">Owner Photo (Optional)</label>
-                            <input type="file" name="ownerPhotoFile" id="teamOwnerPhotoFileInput" accept="image/*" style="font-size: 11px;">
+                            <label style="font-size: 11px;">Owner Photo</label>
+                            <input type="file" name="ownerPhotoFile" id="teamOwnerPhotoFileInput" accept="image/*" style="font-size: 11px;" onchange="previewLeadershipPhoto(this, 'teamOwnerPhotoPreview', 'teamOwnerPhotoPreviewWrap', 'teamOwnerPhotoRemoveInput')">
+                            <input type="hidden" name="ownerPhotoUrl" id="teamOwnerPhotoUrlInput">
+                            <input type="hidden" name="ownerPhotoRemove" id="teamOwnerPhotoRemoveInput" value="0">
+                            <div id="teamOwnerPhotoPreviewWrap" style="display: none; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; background: #fff; padding: 6px 8px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img id="teamOwnerPhotoPreview" src="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #b45309;" alt="Owner Photo">
+                                    <span style="font-size: 11px; color: #475569; font-weight: 600;">Owner Photo</span>
+                                </div>
+                                <button type="button" onclick="clearLeadershipPhoto('Owner')" style="background: #fee2e2; color: #dc2626; border: none; border-radius: 4px; padding: 3px 8px; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 4px;" title="Remove Photo">
+                                    <i class="fa-solid fa-trash"></i> Remove
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -4432,8 +4454,19 @@ if ($isLogged) {
                             <input type="text" name="captainRole" id="teamCaptainRoleInput" placeholder="Team Captain" value="Team Captain">
                         </div>
                         <div class="input-group">
-                            <label style="font-size: 11px;">Captain Photo (Optional)</label>
-                            <input type="file" name="captainPhotoFile" id="teamCaptainPhotoFileInput" accept="image/*" style="font-size: 11px;">
+                            <label style="font-size: 11px;">Captain Photo</label>
+                            <input type="file" name="captainPhotoFile" id="teamCaptainPhotoFileInput" accept="image/*" style="font-size: 11px;" onchange="previewLeadershipPhoto(this, 'teamCaptainPhotoPreview', 'teamCaptainPhotoPreviewWrap', 'teamCaptainPhotoRemoveInput')">
+                            <input type="hidden" name="captainPhotoUrl" id="teamCaptainPhotoUrlInput">
+                            <input type="hidden" name="captainPhotoRemove" id="teamCaptainPhotoRemoveInput" value="0">
+                            <div id="teamCaptainPhotoPreviewWrap" style="display: none; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; background: #fff; padding: 6px 8px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img id="teamCaptainPhotoPreview" src="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #15803d;" alt="Captain Photo">
+                                    <span style="font-size: 11px; color: #475569; font-weight: 600;">Captain Photo</span>
+                                </div>
+                                <button type="button" onclick="clearLeadershipPhoto('Captain')" style="background: #fee2e2; color: #dc2626; border: none; border-radius: 4px; padding: 3px 8px; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 4px;" title="Remove Photo">
+                                    <i class="fa-solid fa-trash"></i> Remove
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -6248,18 +6281,35 @@ function previewTeamImage(input, imgId, wrapId) {
     }
 }
 
-function addTeamPlayerRow(name = '', pos = 'Pivot', no = '01') {
+function addTeamPlayerRow(name = '', pos = 'Pivot', no = '01', photoUrl = '') {
     const container = document.getElementById('teamPlayersContainer');
     if (!container) return;
 
     const row = document.createElement('div');
     row.className = 'team-player-row-item';
-    row.style = 'display: grid; grid-template-columns: 2fr 1.5fr 1fr 40px; gap: 8px; align-items: center; background: #fff; padding: 6px 10px; border-radius: 6px; border: 1px solid #cbd5e1;';
+    row.style = 'display: grid; grid-template-columns: 46px 2fr 1.3fr 70px 36px; gap: 10px; align-items: center; background: #fff; padding: 6px 10px; border-radius: 6px; border: 1px solid #cbd5e1;';
 
-    const safeName = String(name).replace(/"/g, '&quot;');
-    const safeNo = String(no).replace(/"/g, '&quot;');
+    const safeName = String(name || '').replace(/"/g, '&quot;');
+    const safeNo = String(no || '').replace(/"/g, '&quot;');
+    const safePhoto = String(photoUrl || '').replace(/"/g, '&quot;');
+    const hasPhoto = Boolean(photoUrl && photoUrl.trim() !== '');
+    const thumbSrc = hasPhoto ? (photoUrl.startsWith('http') || photoUrl.startsWith('data:') ? photoUrl : ('../' + photoUrl)) : '';
 
     row.innerHTML = `
+        <div class="player-photo-picker-box" style="position: relative; width: 42px; height: 42px;">
+            <input type="hidden" name="playerPhotos[]" class="player-photo-url-input" value="${safePhoto}">
+            <input type="file" name="playerPhotoFiles[]" class="player-photo-file-input" accept="image/*" style="display: none;" onchange="previewSquadPlayerPhoto(this)">
+            
+            <div class="player-thumb-wrap" onclick="this.previousElementSibling.click()" style="width: 42px; height: 42px; border-radius: 50%; border: 2px solid ${hasPhoto ? '#8b5cf6' : '#cbd5e1'}; overflow: hidden; background: #f1f5f9; cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative;" title="Click to choose player photo">
+                <img class="player-thumb-img" src="${thumbSrc}" style="width: 100%; height: 100%; object-fit: cover; display: ${hasPhoto ? 'block' : 'none'};" alt="Player Photo" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
+                <div class="player-thumb-placeholder" style="display: ${hasPhoto ? 'none' : 'flex'}; flex-direction: column; align-items: center; justify-content: center; color: #94a3b8; font-size: 13px;">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+            </div>
+            <button type="button" class="player-thumb-remove-btn" onclick="clearSquadPlayerPhoto(this)" style="display: ${hasPhoto ? 'flex' : 'none'}; position: absolute; top: -3px; right: -3px; width: 18px; height: 18px; border-radius: 50%; background: #ef4444; color: #fff; border: 1.5px solid #fff; font-size: 9px; cursor: pointer; align-items: center; justify-content: center; z-index: 5;" title="Remove Photo">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
         <input type="text" name="playerNames[]" value="${safeName}" placeholder="Player Name" required style="padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 13px; font-weight: 600;">
         <select name="playerPositions[]" style="padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 12px; font-weight: 600; background: #fff;">
             <option value="Goalkeeper" ${pos === 'Goalkeeper' ? 'selected' : ''}>Goalkeeper</option>
@@ -6278,6 +6328,80 @@ function addTeamPlayerRow(name = '', pos = 'Pivot', no = '01') {
         </button>
     `;
     container.appendChild(row);
+}
+
+function previewSquadPlayerPhoto(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        const box = input.closest('.player-photo-picker-box');
+        if (!box) return;
+        const img = box.querySelector('.player-thumb-img');
+        const placeholder = box.querySelector('.player-thumb-placeholder');
+        const removeBtn = box.querySelector('.player-thumb-remove-btn');
+        const thumbWrap = box.querySelector('.player-thumb-wrap');
+        const urlInput = box.querySelector('.player-photo-url-input');
+
+        reader.onload = function(e) {
+            if (img) {
+                img.src = e.target.result;
+                img.style.display = 'block';
+            }
+            if (placeholder) placeholder.style.display = 'none';
+            if (removeBtn) removeBtn.style.display = 'flex';
+            if (thumbWrap) thumbWrap.style.borderColor = '#8b5cf6';
+            if (urlInput) urlInput.value = '';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function clearSquadPlayerPhoto(btn) {
+    const box = btn.closest('.player-photo-picker-box');
+    if (!box) return;
+    const fileInput = box.querySelector('.player-photo-file-input');
+    const urlInput = box.querySelector('.player-photo-url-input');
+    const img = box.querySelector('.player-thumb-img');
+    const placeholder = box.querySelector('.player-thumb-placeholder');
+    const thumbWrap = box.querySelector('.player-thumb-wrap');
+
+    if (fileInput) fileInput.value = '';
+    if (urlInput) urlInput.value = '';
+    if (img) {
+        img.src = '';
+        img.style.display = 'none';
+    }
+    if (placeholder) placeholder.style.display = 'flex';
+    if (thumbWrap) thumbWrap.style.borderColor = '#cbd5e1';
+    btn.style.display = 'none';
+}
+
+function previewLeadershipPhoto(input, imgId, wrapId, removeInputId) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.getElementById(imgId);
+            const wrap = document.getElementById(wrapId);
+            const removeInput = document.getElementById(removeInputId);
+            if (img) img.src = e.target.result;
+            if (wrap) wrap.style.display = 'flex';
+            if (removeInput) removeInput.value = '0';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function clearLeadershipPhoto(type) {
+    const fileInput = document.getElementById(`team${type}PhotoFileInput`);
+    const urlInput = document.getElementById(`team${type}PhotoUrlInput`);
+    const removeInput = document.getElementById(`team${type}PhotoRemoveInput`);
+    const wrap = document.getElementById(`team${type}PhotoPreviewWrap`);
+    const img = document.getElementById(`team${type}PhotoPreview`);
+
+    if (fileInput) fileInput.value = '';
+    if (urlInput) urlInput.value = '';
+    if (removeInput) removeInput.value = '1';
+    if (img) img.src = '';
+    if (wrap) wrap.style.display = 'none';
 }
 
 function openTeamModal(team = null) {
@@ -6319,20 +6443,20 @@ function openTeamModal(team = null) {
         document.getElementById('teamPosterUrlInput').value = curPoster;
 
         if (curFooterLogo && footerLogoWrap) {
-            document.getElementById('teamFooterLogoPreview').src = '../' + curFooterLogo;
+            document.getElementById('teamFooterLogoPreview').src = curFooterLogo.startsWith('http') ? curFooterLogo : ('../' + curFooterLogo);
             footerLogoWrap.style.display = 'flex';
         } else if (footerLogoWrap) {
             footerLogoWrap.style.display = 'none';
         }
 
         if (curPoster && posterWrap) {
-            document.getElementById('teamPosterPreview').src = '../' + curPoster;
+            document.getElementById('teamPosterPreview').src = curPoster.startsWith('http') ? curPoster : ('../' + curPoster);
             posterWrap.style.display = 'flex';
         } else if (posterWrap) {
             posterWrap.style.display = 'none';
         }
 
-        // Leadership
+        // Leadership Data
         document.getElementById('teamCoachNameInput').value = team.coach ? (team.coach.name || '') : '';
         document.getElementById('teamCoachRoleInput').value = team.coach ? (team.coach.role || 'Head Coach') : 'Head Coach';
 
@@ -6342,16 +6466,38 @@ function openTeamModal(team = null) {
         document.getElementById('teamCaptainNameInput').value = team.captain ? (team.captain.name || '') : '';
         document.getElementById('teamCaptainRoleInput').value = team.captain ? (team.captain.role || 'Team Captain') : 'Team Captain';
 
-        // Players
+        // Leadership Photos & Previews
+        ['Coach', 'Owner', 'Captain'].forEach(type => {
+            const fileIn = document.getElementById(`team${type}PhotoFileInput`);
+            const urlIn = document.getElementById(`team${type}PhotoUrlInput`);
+            const remIn = document.getElementById(`team${type}PhotoRemoveInput`);
+            const wrap = document.getElementById(`team${type}PhotoPreviewWrap`);
+            const img = document.getElementById(`team${type}PhotoPreview`);
+
+            if (fileIn) fileIn.value = '';
+            if (remIn) remIn.value = '0';
+
+            const photoUrl = (team && team[type.toLowerCase()]) ? (team[type.toLowerCase()].photoUrl || '') : '';
+            if (urlIn) urlIn.value = photoUrl;
+
+            if (photoUrl && wrap && img) {
+                img.src = photoUrl.startsWith('http') || photoUrl.startsWith('data:') ? photoUrl : ('../' + photoUrl);
+                wrap.style.display = 'flex';
+            } else if (wrap) {
+                wrap.style.display = 'none';
+            }
+        });
+
+        // Squad Players
         if (team.players && Array.isArray(team.players) && team.players.length > 0) {
             team.players.forEach(p => {
-                addTeamPlayerRow(p.name || '', p.pos || 'Pivot', p.no || '01');
+                addTeamPlayerRow(p.name || '', p.pos || 'Pivot', p.no || '01', p.photoUrl || p.photo || '');
             });
         } else {
-            addTeamPlayerRow('', 'Centre Back', '07');
-            addTeamPlayerRow('', 'Goalkeeper', '01');
-            addTeamPlayerRow('', 'Left Wing', '09');
-            addTeamPlayerRow('', 'Right Wing', '11');
+            addTeamPlayerRow('', 'Centre Back', '07', '');
+            addTeamPlayerRow('', 'Goalkeeper', '01', '');
+            addTeamPlayerRow('', 'Left Wing', '09', '');
+            addTeamPlayerRow('', 'Right Wing', '11', '');
         }
     } else {
         // Add New Mode
@@ -6371,15 +6517,26 @@ function openTeamModal(team = null) {
         if (footerLogoWrap) footerLogoWrap.style.display = 'none';
         if (posterWrap) posterWrap.style.display = 'none';
 
+        ['Coach', 'Owner', 'Captain'].forEach(type => {
+            const fileIn = document.getElementById(`team${type}PhotoFileInput`);
+            const urlIn = document.getElementById(`team${type}PhotoUrlInput`);
+            const remIn = document.getElementById(`team${type}PhotoRemoveInput`);
+            const wrap = document.getElementById(`team${type}PhotoPreviewWrap`);
+            if (fileIn) fileIn.value = '';
+            if (urlIn) urlIn.value = '';
+            if (remIn) remIn.value = '0';
+            if (wrap) wrap.style.display = 'none';
+        });
+
         // Default empty squad rows
-        addTeamPlayerRow('', 'Centre Back', '07');
-        addTeamPlayerRow('', 'Goalkeeper', '01');
-        addTeamPlayerRow('', 'Left Wing', '09');
-        addTeamPlayerRow('', 'Right Wing', '11');
-        addTeamPlayerRow('', 'Pivot / Line', '14');
-        addTeamPlayerRow('', 'Left Back', '04');
-        addTeamPlayerRow('', 'Right Back', '08');
-        addTeamPlayerRow('', 'Defender', '18');
+        addTeamPlayerRow('', 'Centre Back', '07', '');
+        addTeamPlayerRow('', 'Goalkeeper', '01', '');
+        addTeamPlayerRow('', 'Left Wing', '09', '');
+        addTeamPlayerRow('', 'Right Wing', '11', '');
+        addTeamPlayerRow('', 'Pivot / Line', '14', '');
+        addTeamPlayerRow('', 'Left Back', '04', '');
+        addTeamPlayerRow('', 'Right Back', '08', '');
+        addTeamPlayerRow('', 'Defender', '18', '');
     }
 
     document.getElementById('teamModal').classList.add('show');
